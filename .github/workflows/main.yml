@@ -36,8 +36,8 @@ jobs:
           chmod 600 ec2-key.pem
           
           ssh -o StrictHostKeyChecking=no -i ec2-key.pem ubuntu@$EC2_IP << EOF
-          git pull origin main
           cd labs020925
+          git pull origin main
           source venv/bin/activate
           pip install Flask
           pip install gunicorn
