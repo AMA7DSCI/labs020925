@@ -42,6 +42,7 @@ jobs:
           pip install Flask
           pip install gunicorn
           sudo systemctl stop nginx
-          sudo systemctl restart nginx  # Restart the app after deployment
+          sudo systemctl start nginx
+          sudo systemctl enable nginx
           EOF
           rm ec2-key.pem
