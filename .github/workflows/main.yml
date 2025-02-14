@@ -33,8 +33,7 @@ jobs:
           USER_NAME: ${{secrets.USER_NAME}}
           
         run: |
-          echo "$AWS_SSH_KEY" > aws_ssh_key && chmod 600 aws_ssh_key
-          ssh -o StrictHostKeyChecking=no -i aws_ssh_key ubuntu@$EC2_IP << EOF
+          ssh -o StrictHostKeyChecking=no -i $AWS_SSH_KEY ubuntu@$EC2_IP << EOF
           cd /path/to/app
           git pull origin main
           source venv/bin/activate
