@@ -38,6 +38,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i ec2-key.pem ubuntu@$EC2_IP << EOF
           cd labs020925
           git pull origin main
+          python -m pip install --upgrade pip
+          python3 -m venv venv
           source venv/bin/activate
           pip install Flask
           pip install gunicorn
