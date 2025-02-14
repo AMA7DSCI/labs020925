@@ -40,7 +40,7 @@ jobs:
           git pull origin main
           source venv/bin/activate
           pip install Flask
-          pip install gunicord
+          pip install gunicorn
           sudo systemctl restart myapp  # Restart the app after deployment
           EOF
           rm ec2-key.pem
