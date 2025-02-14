@@ -41,6 +41,7 @@ jobs:
           source venv/bin/activate
           pip install Flask
           pip install gunicorn
-          sudo systemctl restart gunicorn
+          sudo systemctl stop nginx
+          sudo systemctl restart nginx
           EOF
           rm ec2-key.pem
