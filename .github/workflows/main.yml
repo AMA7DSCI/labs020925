@@ -36,10 +36,11 @@ jobs:
           chmod 600 ec2-key.pem
           
           ssh -o StrictHostKeyChecking=no -i ec2-key.pem ubuntu@$EC2_IP << EOF
-          cd /path/to/app
+          cd labs020925
           git pull origin main
           source venv/bin/activate
-          pip install -r requirements.txt
+          pip install Flask
+          pip install gunicord
           sudo systemctl restart myapp  # Restart the app after deployment
           EOF
           rm ec2-key.pem
