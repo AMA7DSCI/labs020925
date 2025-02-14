@@ -34,7 +34,6 @@ jobs:
           aws-region: ‘us-west-2’
           
         run: |
-          aws-region: ‘us-west-2’
           ssh -o StrictHostKeyChecking=no -i $AWS_SSH_KEY ubuntu@$EC2_IP << EOF
           cd /path/to/app
           git pull origin main
