@@ -41,6 +41,7 @@ jobs:
           source venv/bin/activate
           pip install Flask
           pip install gunicorn
+          sudo systemctl restart labs020925
           sudo systemctl stop nginx
           sudo systemctl restart nginx
           sudo systemctl enable nginx
