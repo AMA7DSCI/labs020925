@@ -31,13 +31,15 @@ jobs:
           EC2_IP: ${{secrets.EC2_IP}}
           AWS_SSH_KEY: ${{secrets.AWS_SSH_KEY}}
           USER_NAME: ${{secrets.USER_NAME}}
-          aws-region: ‘us-west-2’
-          
         run: |
-          ssh -o StrictHostKeyChecking=no -i $AWS_SSH_KEY ubuntu@$EC2_IP << EOF
+          echo "${EC2_KEY}" > ec2-key.pem
+          chmod 600 ec2-key.pem
+          
+          ssh -o StrictHostKeyChecking=no -i ec2-key.pem ubuntu@$EC2_IP << EOF
           cd /path/to/app
           git pull origin main
           source venv/bin/activate
           pip install -r requirements.txt
           sudo systemctl restart myapp  # Restart the app after deployment
           EOF
+          rm ec2-key.pem
